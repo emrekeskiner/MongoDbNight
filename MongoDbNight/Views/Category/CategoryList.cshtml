@@ -1,0 +1,30 @@
+﻿@model List<MongoDbNight.Dtos.CategoryDtos.ResultCategoryDto>
+@{
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="alert alert-info">Kategori Listesi</div>
+<a href="/Category/CreateCategory" class="btn btn-primary mb-2">Kategori Ekle</a>
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+            <th>@item.CategoryId</th>
+            <td>@item.CategoryName</td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-warning">Düzenle</a></td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+        
+        
+    </tbody>
+</table>

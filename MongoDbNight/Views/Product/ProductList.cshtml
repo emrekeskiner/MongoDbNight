@@ -1,0 +1,40 @@
+﻿@model List<MongoDbNight.Dtos.ProductDtos.ResultProductDto>
+@{
+    ViewData["Title"] = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="alert alert-info">Ürün Listesi</div>
+<a href="/Product/CreateProduct" class="btn btn-primary mb-2">Ürün Ekle</a>
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Kategori</th>
+            <th>Ürün Adı</th>
+            <th>Stok</th>
+            <th>Ücret</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.ProductId</th>
+                <th>@item.CategoryName</th>
+                <td>@item.ProductName</td>
+                <td>@item.Stock</td>
+                <td>@item.Price</td>
+                <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-warning">Düzenle</a></td>
+                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+
