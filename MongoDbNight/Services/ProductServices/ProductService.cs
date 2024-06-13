@@ -42,7 +42,9 @@ namespace MongoDbNight.Services.ProductServices
             {
                 var category = categories.FirstOrDefault(c => c.CategoryId == product.CategoryId);
                 var resultProductDto = _mapper.Map<ResultProductDto>(product);
-                resultProductDto.CategoryName = category?.CategoryName; 
+                if(category != null) { 
+                resultProductDto.CategoryName = category.CategoryName; 
+                }
                 return resultProductDto;
             }).ToList();
 
