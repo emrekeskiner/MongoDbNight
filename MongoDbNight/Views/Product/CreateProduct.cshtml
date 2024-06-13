@@ -10,15 +10,14 @@
 <br />
 <form method="post">
     <div class="alert alert-info">Yeni Ürün Ekleme Sayfası</div>
+    <label class="mb-1">Kategori</label>
+    <select asp-for="CategoryId" class="form-control mb-2" asp-items="ViewBag.categoryList"></select>
     <label class="mb-1">Ürün Adı</label>
     <input type="text" asp-for="ProductName" class="form-control mb-2" />
      <label class="mb-1">Stok Miktarı</label>
     <input type="text" asp-for="Stock" class="form-control mb-2" />
     <label class="mb-1">Fiyatı</label>
     <input type="text" asp-for="Price" class="form-control mb-2" />
-    <label class="mb-1">KategoriID</label>
-    <input type="text" asp-for="CategoryId" class="form-control mb-2" />
-    
-    <button class="btn btn-primary">Kaydet</button>
+     <button class="btn btn-primary">Kaydet</button>
 </form>
 

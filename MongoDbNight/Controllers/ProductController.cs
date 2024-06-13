@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MongoDbNight.Dtos.ProductDtos;
+using MongoDbNight.Services.CategoryServices;
 using MongoDbNight.Services.ProductServices;
 
 namespace MongoDbNight.Controllers
@@ -7,10 +9,12 @@ namespace MongoDbNight.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> ProductList()
@@ -20,8 +24,14 @@ namespace MongoDbNight.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct()
+        public async Task<IActionResult> CreateProduct()
         {
+            var categories = await _categoryService.GetAllCategoryAsync();
+            var categoryList = categories.Select(c => new { c.CategoryId, c.CategoryName }).ToList();
+            categoryList.Insert(0, new { CategoryId = (string)null, CategoryName = "Seçiniz" });
+
+            ViewBag.categoryList = new SelectList(categoryList, "CategoryId", "CategoryName");
+
             return View();
         }
         [HttpPost]
@@ -35,6 +45,10 @@ namespace MongoDbNight.Controllers
         public async Task<IActionResult> UpdateProduct(string id)
         {
             var value = await _productService.GetByIdProductAsync(id);
+            //CategoryId ve Name Alanını doldur
+            var categories = await _categoryService.GetAllCategoryAsync();
+            ViewBag.categoryList = new SelectList(categories, "CategoryId", "CategoryName");
+
             return View(value);
         }
         [HttpPost]
