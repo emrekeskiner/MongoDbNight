@@ -1,0 +1,26 @@
+﻿@model MongoDbNight.Dtos.CustomerDtos.GetByIdCustomerDto
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<br />
+<br />
+<div class="alert alert-info">Müşteri Düzenleme Sayfası</div>
+<form method="post">
+    @Html.HiddenFor(x=>x.CustomerId)
+    <label class="mb-1">Adı</label>
+    <input type="text" asp-for="Name" class="form-control mb-2" />
+    <label class="mb-1">Soyadı</label>
+    <input type="text" asp-for="Lastname" class="form-control mb-2" />
+    <label class="mb-1">E-Mail</label>
+    <input type="text" asp-for="Email" class="form-control mb-2" />
+    <label class="mb-1">Gsm</label>
+    <input type="text" asp-for="Phone" class="form-control mb-2" />
+    <label class="mb-1">Şehir</label>
+    <input type="text" asp-for="City" class="form-control mb-2" />
+    <button class="btn btn-primary">Güncelle</button>
+</form>
+

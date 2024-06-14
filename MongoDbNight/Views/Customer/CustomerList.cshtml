@@ -1,0 +1,44 @@
+﻿@model List<MongoDbNight.Dtos.CustomerDtos.ResultCustomerDto>
+@{
+    ViewData["Title"] = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="alert alert-info">Müşteri Listesi</div>
+<a href="/Customer/CreateCustomer" class="btn btn-primary mb-2">Müşteri Ekle</a>
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Adı, Soyadı</th>
+            <th>Şehir</th>
+            <th>Gsm</th>
+            <th>Mail</th>
+            <th>Kayıt Tarihi</th>
+            <th>Satış Yap</th>
+            <th>Satış Detay</th>
+            <th>Düzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.CustomerId</th>
+                <th>@item.FullName</th>
+                <td>@item.City</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.CreatedDate</td>
+                <td><a href="/Order/SalesCustomer/@item.CustomerId" class="btn btn-success">Satış Yap</a></td>
+                <td><a href="/Order/OrderDetail/@item.CustomerId" class="btn btn-info">Satış Detay</a></td>
+                <td><a href="/Customer/UpdateCustomer/@item.CustomerId" class="btn btn-warning">Düzenle</a></td>
+               
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+

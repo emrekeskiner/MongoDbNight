@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Options;
 using MongoDbNight.Services.CategoryServices;
+using MongoDbNight.Services.CustomerServices;
 using MongoDbNight.Services.ProductServices;
 using MongoDbNight.Settings;
 using System.Reflection;
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<IProductService,ProductService>();
+builder.Services.AddScoped<ICustomerService,CustomerService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddScoped<IDatabaseSettings>(sp =>

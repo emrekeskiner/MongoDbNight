@@ -11,5 +11,6 @@ namespace MongoDbNight.Dtos.ProductDtos
         public int Stock { get; set; }
         public string CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public string Cost => (Stock * Price).ToString("C");
     }
 }

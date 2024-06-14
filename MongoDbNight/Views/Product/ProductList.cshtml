@@ -15,6 +15,7 @@
             <th>Ürün Adı</th>
             <th>Stok</th>
             <th>Ücret</th>
+            <th>Stok Maliyeti</th>
             <th>Düzenle</th>
             <th>Sil</th>
         </tr>
@@ -28,6 +29,7 @@
                 <td>@item.ProductName</td>
                 <td>@item.Stock</td>
                 <td>@item.Price</td>
+                <td>@item.Cost</td>
                 <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-warning">Düzenle</a></td>
                 <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
             </tr>
