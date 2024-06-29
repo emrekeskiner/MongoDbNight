@@ -1,6 +1,5 @@
 ﻿@model List<MongoDbNight.Dtos.CustomerDtos.ResultCustomerDto>
 @{
-    ViewData["Title"] = "CustomerList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,8 +30,16 @@
                 <td>@item.Phone</td>
                 <td>@item.Email</td>
                 <td>@item.CreatedDate</td>
-                <td><a href="/Order/SalesCustomer/@item.CustomerId" class="btn btn-success">Satış Yap</a></td>
-                <td><a href="/Order/OrderDetail/@item.CustomerId" class="btn btn-info">Satış Detay</a></td>
+                <td>    <form action="https://localhost:7243/Order/CreateOrder/" method="post">
+                        <input type="hidden" name="OrderId" value="" />
+                        <input type="hidden" name="CustomerId" value="@item.CustomerId" />
+                        <input type="hidden" name="OrderDate" value="@DateTime.Now" />
+                        <input type="hidden" name="TotalAmount" value="0" />
+                        <button class="btn btn-success" type="submit">Satış Yap</button>
+                    </form>
+                </td>
+
+                <td><a href="/Order/CustomerOrderList/@item.CustomerId" class="btn btn-info">Siparişler</a></td>
                 <td><a href="/Customer/UpdateCustomer/@item.CustomerId" class="btn btn-warning">Düzenle</a></td>
                
             </tr>

@@ -1,16 +1,14 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using MongoDbNight.Entities;
 
-namespace MongoDbNight.Entities
+namespace MongoDbNight.Dtos.OrderDtos
 {
-    public class Order
+    public class GetByIdOrderDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string OrderId { get; set; }
 
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string CustomerId { get; set; } 
+        public string CustomerId { get; set; }
 
         public List<OrderItem> Items { get; set; }
 

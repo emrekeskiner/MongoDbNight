@@ -1,0 +1,63 @@
+﻿@model List<MongoDbNight.Dtos.OrderDtos.ResultOrderDto>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+<div class="alert alert-info">Sipariş Listesi</div>
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Müşteri</th>
+            <th>İşlem Tarihi</th>
+            <th>Toplam Ücret</th>
+            <th>Detay</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.OrderId</th>
+                <th>@item.CustomerName</th>
+                <td>@item.OrderDate</td>
+                <td>@item.TotalAmount</td>
+                <td><a href="/OrderDetail/OrderDetailList/@item.OrderId" class="btn btn-info">İncele</a></td>
+                <td><a href="/Order/UpdateOrder/@item.OrderId" class="btn btn-warning">Düzenle</a></td>
+                <td><a href="/Order/DeleteOrder/@item.OrderId" class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+
+        @ViewBag.Id
+    </tbody>
+</table>
+    <div class="modal fade" id="CreateProductForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Ürün Ekle</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="productname" class="mt-1">Ürün Adı</label>
+                    <input type="text" id="productname" class="form-control mb-2" />
+                    <label for="productstock">Adet</label>
+                    <input type="text" id="productstock" class="form-control mb-2" />
+                    <label for="productprice">Fiyatı</label>
+                    <input type="text" id="productprice" class="form-control mb-2" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button id="btncreate" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

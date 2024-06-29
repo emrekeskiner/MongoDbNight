@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MongoDbNight.Dtos.CategoryDtos;
 using MongoDbNight.Dtos.CustomerDtos;
+using MongoDbNight.Dtos.OrderDtos;
+using MongoDbNight.Dtos.OrderItemDtos;
 using MongoDbNight.Dtos.ProductDtos;
 using MongoDbNight.Entities;
 
@@ -24,6 +26,16 @@ namespace MongoDbNight.Mapping
             CreateMap<Customer, CreateCustomerDto>().ReverseMap();
             CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
             CreateMap<Customer, GetByIdCustomerDto>().ReverseMap();
+
+            CreateMap<Order, ResultOrderDto>().ReverseMap();
+            CreateMap<Order, CreateOrderDto>().ReverseMap();
+            CreateMap<Order, UpdateOrderDto>().ReverseMap();
+            CreateMap<Order, GetByIdOrderDto>().ReverseMap();
+
+            CreateMap<OrderItem, ResultOrderItemDto>().ReverseMap();
+            CreateMap<OrderItem, CreateOrderItemDto>().ReverseMap();
+            CreateMap<OrderItem, UpdateOrderItemDto>().ReverseMap();
+            CreateMap<OrderItem, GetByIdOrderItemDto>().ReverseMap();
         }
     }
 }
